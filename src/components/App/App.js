@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { Modal } from "../Modal/modal";
 import { MainContainer, Content } from "./components";
+
+
 export const App = () => {
-  const [modalActive, setModalActive] = useState(true);
+
+  const [modalActive, setModalActive] = useState(false);
+
+  const buttonHandle = ()=>{
+    setModalActive(true)
+  }
 
   return (
     <MainContainer>
@@ -13,7 +20,7 @@ export const App = () => {
           <option value="warning">Warning</option>
           <option value="error">Error</option>
         </select>
-        <button onClick={() => setModalActive(true)}>Click</button>
+        <button onClick={buttonHandle}>Click</button>
         <Modal active={modalActive} setActive={setModalActive} />
       </Content>
     </MainContainer>

@@ -1,17 +1,19 @@
-import { ModalSttyles, WindowStyle } from "./styles";
-import "./components.css";
+import { ModalStyles, WindowStyle } from "./styles";
 
 export const Modal = ({ active, setActive }) => {
+
+  const closeModal = ()=>{
+    setActive(false)
+  }
+
   return (
-    <div
-      className={active ? "modal active" : "modal"}
-      active={true}
-      onClick={() => setActive(false)}
+    <ModalStyles
+      onClick={closeModal}
+      active={active}
     >
-      <div
-        className="modal__content"
+      <WindowStyle
         onClick={(e) => e.stopPropagation()}
-      ></div>
-    </div>
+      ></WindowStyle>
+    </ModalStyles>
   );
 };

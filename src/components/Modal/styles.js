@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
-export const ModalSttyles = styled.div`
+export const ModalStyles = styled.div`
   height: 100vh;
   width: 100vw;
-  /* background-color: rgba(); */
   position: fixed;
   display: flex;
   justify-content: flex-end;
-  transform: ${(props) => (props.active ? "scale(0)" : "scale(1)")};
+  top:0;
+  left:0;
+  transform: ${(props) => (props.active ? "scale(1)" : "scale(0)")};
+  transition: 0.5s;
 `;
 
 export const WindowStyle = styled.div`
@@ -16,5 +18,5 @@ export const WindowStyle = styled.div`
   border: 1px solid black;
   padding: 20px;
   border-radius: 10px;
-  background-color: yellow;
+  background-color: rebeccapurple;
 `;
