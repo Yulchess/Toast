@@ -1,19 +1,15 @@
+import { Portal } from "../../Portal";
 import { ModalStyles, WindowStyle } from "./styles";
+import { theme } from "../../theme";
 
 export const Modal = ({ active, setActive }) => {
-
-  const closeModal = ()=>{
-    setActive(false)
-  }
-
   return (
-    <ModalStyles
-      onClick={closeModal}
-      active={active}
-    >
-      <WindowStyle
-        onClick={(e) => e.stopPropagation()}
-      ></WindowStyle>
-    </ModalStyles>
+    <Portal>
+      <ModalStyles active={active}>
+        <WindowStyle>
+          <p>Title</p>
+        </WindowStyle>
+      </ModalStyles>
+    </Portal>
   );
 };
