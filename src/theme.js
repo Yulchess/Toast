@@ -8,6 +8,10 @@ const flamePea = "#e25837";
 const shamrock = "#37e29a";
 const white = "#ffffff";
 const black = "#000000";
+const top = 12;
+const right = 12;
+const left = 12;
+const bottom = 12;
 
 export const theme = {
   colors: {
@@ -18,6 +22,31 @@ export const theme = {
     white,
     black,
     main,
+  },
+  pos: {
+    top,
+    right,
+    left,
+    bottom,
+  },
+};
+
+export const TopRigth = {
+  ...theme,
+  top: {
+    top,
+  },
+  right: {
+    right,
+  },
+};
+export const TopLeft = {
+  ...theme,
+  top: {
+    top,
+  },
+  left: {
+    left,
   },
 };
 

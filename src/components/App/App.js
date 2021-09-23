@@ -20,7 +20,7 @@ export const App = () => {
   const { theme, changeNotification } = useContext(DesignContext);
   const [checkValue, setCheckValue] = useState(false);
   let [list, setList] = useState([]);
-  const [position, setPosition] = useState("");
+  const [position, setPosition] = useState("TopRight");
 
   const buttonHandle = () => {
     setModalActive(true);
@@ -134,10 +134,10 @@ export const App = () => {
             <CheckBoxText>Auto close</CheckBoxText>
           </CheckBoxContent>
           <select value={position} onChange={selectPosition}>
-            <option value="top-right">Top Rigth</option>
-            <option value="top-left">Top Left</option>
-            <option value="bottom-left">Bottom Rigth</option>
-            <option value="sbottom-right">Bottom Left</option>
+            <option value="TopRight">Top Rigth</option>
+            <option value="TopLeft">Top Left</option>
+            <option value="BottomLeft">Bottom Rigth</option>
+            <option value="BottomRight">Bottom Left</option>
           </select>
           {/* <button onClick={buttonHandle}>Click</button> */}
         </Content>

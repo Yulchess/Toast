@@ -2,9 +2,51 @@ import styled from "styled-components";
 
 export const ModalStyles = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
   margin: 10px;
+
+  top: ${({ position }) => {
+    switch (position) {
+      case "TopRight":
+        return 0;
+      case "TopLeft":
+        return 0;
+      default:
+        return "initial";
+    }
+  }};
+
+  bottom: ${({ position }) => {
+    switch (position) {
+      case "BottomRight":
+        return 0;
+      case "BottomLeft":
+        return 0;
+      default:
+        return "initial";
+    }
+  }};
+
+  left: ${({ position }) => {
+    switch (position) {
+      case "TopLeft":
+        return 0;
+      case "BottomRigth":
+        return 0;
+      default:
+        return "initial";
+    }
+  }};
+
+  right: ${({ position }) => {
+    switch (position) {
+      case "BottomLeft":
+        return 0;
+      case "TopRight":
+        return 0;
+      default:
+        return "initial";
+    }
+  }};
 `;
 export const ToastComp = styled.div`
   display: flex;
@@ -17,22 +59,6 @@ export const ToastComp = styled.div`
   margin: 4px;
 `;
 
-export const WindowStyle = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-
-  padding: 20px;
-`;
-export const ToastText = styled.p`
-  font-size: 16px;
-  text-align: left;
-  margin-top: 0;
-  margin-bottom: 6px;
-  width: 300px;
-  height: 18px;
-`;
 export const ToastInfo = styled.p`
   margin: 0;
   text-align: left;

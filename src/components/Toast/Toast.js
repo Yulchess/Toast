@@ -31,23 +31,18 @@ export const Toast = ({ toastList, position, autoDelete, dismissTime }) => {
     setList([...list]);
   };
 
+  console.log(position);
   return (
-    <>
-      <ModalStyles>
-        {list.map((toast, i) => (
-          <ToastComp key={i} style={{ backgroundColor: toast.backgroundColor }}>
-            {/* <div className="notification-image">
-              <img src={toast.icon} alt="" />
-            </div> */}
+    <ModalStyles position={position}>
+      {list.map((toast, i) => (
+        <ToastComp key={i} style={{ backgroundColor: toast.backgroundColor }}>
+          <ToastInfo style={{ color: toast.color }}>
+            {toast.description}
+          </ToastInfo>
 
-            <ToastInfo style={{ color: toast.color }}>
-              {toast.description}
-            </ToastInfo>
-
-            <ToastCloseButton onClick={() => deleteToast(toast.id)} />
-          </ToastComp>
-        ))}
-      </ModalStyles>
-    </>
+          <ToastCloseButton onClick={() => deleteToast(toast.id)} />
+        </ToastComp>
+      ))}
+    </ModalStyles>
   );
 };
