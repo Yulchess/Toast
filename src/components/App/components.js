@@ -13,3 +13,10 @@ export const MainContainer = styled.div`
   justify-content: center;
   align-items: flex-end;
 `;
+
+export const CheckBoxContent = styled.label`
+  display: flex;
+`;
+export const CheckBoxText = styled.p`
+  margin: 0;
+`;

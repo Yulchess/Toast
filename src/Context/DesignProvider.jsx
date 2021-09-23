@@ -32,7 +32,9 @@ export const DesignProvider = ({ children }) => {
   };
 
   return (
-    <DesignContext.Provider value={{ theme:selectToastTheme, changeNotification }}>
+    <DesignContext.Provider
+      value={{ theme: selectToastTheme, changeNotification }}
+    >
       {children}
     </DesignContext.Provider>
   );

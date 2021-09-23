@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from "styled-components";
 export const spacing = [100];
 
 const main = "red";
@@ -24,49 +24,38 @@ export const theme = {
 export const infoNotification = {
   ...theme,
   backgroundColor: {
-      main: darkOrchid
+    main: darkOrchid,
   },
   textColor: {
-      main: white
+    main: white,
   },
-  picture:{
-
-  }
 };
 
 export const warningNotification = {
-    ...theme,
-    backgroundColor: {
-        main: minionYellow
-    },
-    textColor: {
-        main: black
-    },
-    picture:{
-  
-    }
-  };
-  export const errorNotification = {
-    ...theme,
-    backgroundColor: {
-        main: flamePea
-    },
-    textColor: {
-        main: white
-    },
-    picture:{
-  
-    }
-  };
+  ...theme,
+  backgroundColor: {
+    main: minionYellow,
+  },
+  textColor: {
+    main: black,
+  },
+};
+export const errorNotification = {
+  ...theme,
+  backgroundColor: {
+    main: flamePea,
+  },
+  textColor: {
+    main: white,
+  },
+};
 
-  export const successNotification = {
-    ...theme,
-    backgroundColor: {
-        main: shamrock
-    },
-    textColor: {
-        main: white
-    },
-    picture:{
-    }
-  };
+export const successNotification = {
+  ...theme,
+  backgroundColor: {
+    main: shamrock,
+  },
+  textColor: {
+    main: white,
+  },
+};

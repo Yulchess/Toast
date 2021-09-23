@@ -1,15 +1,17 @@
-import { Portal } from "../../Portal";
-import { ModalStyles, WindowStyle } from "./styles";
-import { theme } from "../../theme";
+import {
+  ModalStyles,
+  WindowStyle,
+  ToastText,
+  ToastCloseButton,
+} from "./styles";
 
-export const Modal = ({ active, setActive }) => {
+export const Modal = ({ active }) => {
   return (
-    <Portal>
-      <ModalStyles active={active}>
-        <WindowStyle>
-          <p>Title</p>
-        </WindowStyle>
-      </ModalStyles>
-    </Portal>
+    <ModalStyles active={active}>
+      <WindowStyle>
+        <ToastText>hey</ToastText>
+        <ToastCloseButton></ToastCloseButton>
+      </WindowStyle>
+    </ModalStyles>
   );
 };

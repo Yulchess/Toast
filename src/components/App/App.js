@@ -1,14 +1,27 @@
 import { useState, useContext } from "react";
 import { Modal } from "../Modal/modal";
-import { MainContainer, Content } from "./components";
+import {
+  MainContainer,
+  Content,
+  CheckBoxContent,
+  CheckBoxText,
+} from "./components";
 import { infoNotification } from "../../theme";
 import { DesignContext } from "../../Context/DesignProvider";
 import { ThemeProvider } from "styled-components";
+import { ToastPortal } from "../../Portal";
+import { Button } from "../Button/Button";
+import { Toast } from "../Toast/Toast";
+import { theme } from "../../theme";
 
 export const App = () => {
   const [modalActive, setModalActive] = useState(false);
   const [selectToastTheme, setselectToastTheme] = useState(infoNotification);
-  const { theme,changeNotification} = useContext(DesignContext);
+  const { theme, changeNotification } = useContext(DesignContext);
+  const [checkValue, setCheckValue] = useState(false);
+  let [list, setList] = useState([]);
+  const [position, setPosition] = useState("");
+
   const buttonHandle = () => {
     setModalActive(true);
   };
@@ -18,20 +31,120 @@ export const App = () => {
     setselectToastTheme(event.target.value);
   };
 
+  let toastProperties = null;
+
+  const BUTTON_PROPS = [
+    {
+      id: 1,
+      type: "success",
+      label: "Success",
+    },
+    {
+      id: 2,
+      type: "danger",
+      label: "Danger",
+    },
+    {
+      id: 3,
+      type: "info",
+      label: "Info",
+    },
+    {
+      id: 4,
+      type: "warning",
+      label: "Warning",
+    },
+  ];
+
+  const showToast = (type) => {
+    const id = Date.now();
+
+    switch (type) {
+      case "success":
+        toastProperties = {
+          id,
+          description: "Success toast example",
+          backgroundColor: `${theme.colors.shamrock}`,
+          color: `${theme.colors.white}`,
+        };
+        break;
+      case "danger":
+        toastProperties = {
+          id,
+          description: "Error toast example",
+          backgroundColor: `${theme.colors.flamePea}`,
+          color: `${theme.colors.white}`,
+        };
+        break;
+      case "info":
+        toastProperties = {
+          id,
+          description: "Info toast example",
+          backgroundColor: `${theme.colors.darkOrchid}`,
+          color: `${theme.colors.white}`,
+        };
+        break;
+      case "warning":
+        toastProperties = {
+          id,
+          description: "Warning toast example",
+          backgroundColor: `${theme.colors.minionYellow}`,
+          color: `${theme.colors.black}`,
+        };
+        break;
+
+      default:
+        setList([]);
+    }
+
+    setList([...list, toastProperties]);
+  };
+
+  const onCheckBoxChange = () => {
+    checkValue = !checkValue;
+    setCheckValue(checkValue);
+    setList([]);
+  };
+
+  const selectPosition = (e) => {
+    setPosition(e.target.value);
+    setList([]);
+  };
+
   return (
-    <ThemeProvider theme = {theme}>
+    <ThemeProvider theme={theme}>
       <MainContainer>
         <Content>
-          <select value={selectToastTheme} onChange={selectOnChangeHandle}>
-            <option value="info">Info</option>
-            <option value="warning">Warning</option>
-            <option value="error">Error</option>
-            <option value="success">Success</option>
+          <div>
+            {BUTTON_PROPS.map((e) => (
+              <Button
+                key={e.id}
+                label={e.label}
+                handleClick={() => showToast(e.type)}
+              />
+            ))}
+          </div>
+
+          <CheckBoxContent>
+            <input
+              type="checkbox"
+              value={checkValue}
+              onChange={onCheckBoxChange}
+            ></input>
+            <CheckBoxText>Auto close</CheckBoxText>
+          </CheckBoxContent>
+          <select value={position} onChange={selectPosition}>
+            <option value="top-right">Top Rigth</option>
+            <option value="top-left">Top Left</option>
+            <option value="bottom-left">Bottom Rigth</option>
+            <option value="sbottom-right">Bottom Left</option>
           </select>
-          <button onClick={buttonHandle}>Click</button>
-          <Modal active={modalActive} setActive={setModalActive} />
+          {/* <button onClick={buttonHandle}>Click</button> */}
         </Content>
       </MainContainer>
+      {/* <ToastPortal modalActivee={modalActive} /> */}
+
+      <Toast toastList={list} position={position} />
     </ThemeProvider>
   );
 };

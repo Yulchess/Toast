@@ -1,18 +1,23 @@
 import ReactDOM from "react-dom";
-import React, { Component } from "react"
+import React, { useState } from "react";
+import { Modal } from "../components/Modal/modal";
+import { useToastPortal } from "../Hooks";
+import { Toast } from "../components/Toast/Toast";
 
-export class Portal extends Component {
-  el = document.createElement("div");
+export const ToastPortal = ({ modalActivee }) => {
+  const { loaded, portalId } = useToastPortal();
+  const [toasts, setToasts] = useState([]);
+  const [modalActive, setModalActive] = useState(false);
 
-  componentDidMount() {
-    document.body.appendChild(this.el);
-  }
+  console.log(modalActivee);
 
-  componentWillUnmount() {
-    document.body.removeChild(this.el);
-  }
-
-  render() {
-    return ReactDOM.createPortal(this.props.children, this.el);
-  }
-}
+  return loaded
+    ? ReactDOM.createPortal(
+        <div>
+          {/* <Modal active={modalActivee} setActive={setModalActive}></Modal> */}
+          {/* <ToastPortal></ToastPortal> */}
+        </div>,
+        document.getElementById(portalId)
+      )
+    : null;
+};
