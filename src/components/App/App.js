@@ -18,9 +18,11 @@ export const App = () => {
   const [modalActive, setModalActive] = useState(false);
   const [selectToastTheme, setselectToastTheme] = useState(infoNotification);
   const { theme, changeNotification } = useContext(DesignContext);
-  const [checkValue, setCheckValue] = useState(false);
-  let [list, setList] = useState([]);
+  let [checkValue, setCheckValue] = useState(false);
+  const [list, setList] = useState([]);
   const [position, setPosition] = useState("TopRight");
+
+  const [autoDeleteTime, setAutoDeleteTime] = useState(2000);
 
   const buttonHandle = () => {
     setModalActive(true);
@@ -144,7 +146,12 @@ export const App = () => {
       </MainContainer>
       {/* <ToastPortal modalActivee={modalActive} /> */}
 
-      <Toast toastList={list} position={position} />
+      <Toast
+        toastList={list}
+        position={position}
+        autoDelete={checkValue}
+        autoDeleteTime={autoDeleteTime}
+      />
     </ThemeProvider>
   );
 };

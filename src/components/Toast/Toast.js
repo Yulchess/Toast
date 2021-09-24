@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { ModalStyles, ToastComp, ToastInfo, ToastCloseButton } from "./styles";
 
-export const Toast = ({ toastList, position, autoDelete, dismissTime }) => {
+export const Toast = ({ toastList, position, autoDelete, autoDeleteTime }) => {
   const [list, setList] = useState(toastList);
 
   useEffect(() => {
@@ -14,14 +14,14 @@ export const Toast = ({ toastList, position, autoDelete, dismissTime }) => {
       if (autoDelete && toastList.length && list.length) {
         deleteToast(toastList[0].id);
       }
-    }, dismissTime);
+    }, autoDeleteTime);
 
     return () => {
       clearInterval(interval);
     };
 
     // eslint-disable-next-line
-  }, [toastList, autoDelete, dismissTime, list]);
+  }, [toastList, autoDelete, list]);
 
   const deleteToast = (id) => {
     const listItemIndex = list.findIndex((e) => e.id === id);
@@ -31,7 +31,6 @@ export const Toast = ({ toastList, position, autoDelete, dismissTime }) => {
     setList([...list]);
   };
 
-  console.log(position);
   return (
     <ModalStyles position={position}>
       {list.map((toast, i) => (
