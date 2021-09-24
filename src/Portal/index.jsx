@@ -1,27 +1,44 @@
 import ReactDOM from "react-dom";
-import React, { useState } from "react";
-import { Modal } from "../components/Modal/modal";
+import React, { useEffect, useState } from "react";
+
 import { useToastPortal } from "../Hooks";
-import { Toast } from "../components/Toast/Toast";
+import { Toast } from "../components/Toast";
 
-export const ToastPortal = ({ modalActivee }) => {
-  const { loaded, portalId } = useToastPortal();
-  const [toasts, setToasts] = useState([]);
-  const [modalActive, setModalActive] = useState(false);
-  const [position, setPosition] = useState("TopRight");
-  let [checkValue, setCheckValue] = useState(false);
+export const ToastPortal = ({
+  toastList,
+  position,
+  checkValue,
+  autoDeleteTime,
+}) => {
+  const [list, setList] = useState(toastList);
 
-  const [autoDeleteTime, setAutoDeleteTime] = useState(2000);
+  const [loaded, setLoaded] = useState(false);
+  const [portalId] = useState(`${Date.now()}`);
 
-  const [list, setList] = useState([]);
+  useEffect(() => {
+    const div = document.createElement("div");
+    div.id = portalId;
+    div.style = "position: fixed; top: 10px; right: 10px";
+    document.getElementsByTagName("body")[0].prepend(div);
+
+    setLoaded(true);
+
+    return () => document.getElementsByTagName("body")[0].removeChild(div);
+  }, [portalId]);
+
+  console.log(toastList, position, checkValue, autoDeleteTime);
   return loaded
     ? ReactDOM.createPortal(
-        <Toast
-          toastList={list}
-          position={position}
-          autoDelete={checkValue}
-          autoDeleteTime={autoDeleteTime}
-        />,
+        <div>
+          <p>Hell</p>
+
+          <Toast
+            toastList={list}
+            position={position}
+            autoDelete={checkValue}
+            autoDeleteTime={autoDeleteTime}
+          />
+        </div>,
         document.getElementById(portalId)
       )
     : null;

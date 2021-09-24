@@ -20,3 +20,7 @@ export const CheckBoxContent = styled.label`
 export const CheckBoxText = styled.p`
   margin: 0;
 `;
+export const SelectBox = styled.select`
+  margin-top: 10px;
+  height: 25px;
+`;

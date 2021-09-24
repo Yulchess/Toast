@@ -1,18 +1,18 @@
 import { useState, useContext } from "react";
-import { Modal } from "../Modal/modal";
 import {
   MainContainer,
   Content,
   CheckBoxContent,
   CheckBoxText,
+  SelectBox,
 } from "./components";
 import { infoNotification } from "../../theme";
 import { DesignContext } from "../../Context/DesignProvider";
 import { ThemeProvider } from "styled-components";
 import { ToastPortal } from "../../Portal";
-import { Button } from "../Button/Button";
-import { Toast } from "../Toast/Toast";
-import { theme } from "../../theme";
+import { Button } from "../Button";
+import { Toast } from "../Toast";
+// import Success from "/src/assets/Success.png";
 
 export const App = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -24,9 +24,9 @@ export const App = () => {
 
   const [autoDeleteTime, setAutoDeleteTime] = useState(2000);
 
-  const buttonHandle = () => {
-    setModalActive(true);
-  };
+  // const buttonHandle = () => {
+  //   setModalActive(true);
+  // };
 
   const selectOnChangeHandle = (event) => {
     changeNotification(event.target.value);
@@ -43,8 +43,8 @@ export const App = () => {
     },
     {
       id: 2,
-      type: "danger",
-      label: "Danger",
+      type: "error",
+      label: "Error",
     },
     {
       id: 3,
@@ -70,7 +70,7 @@ export const App = () => {
           color: `${theme.colors.white}`,
         };
         break;
-      case "danger":
+      case "error":
         toastProperties = {
           id,
           description: "Error toast example",
@@ -135,18 +135,15 @@ export const App = () => {
             ></input>
             <CheckBoxText>Auto close</CheckBoxText>
           </CheckBoxContent>
-          <select value={position} onChange={selectPosition}>
+          <SelectBox value={position} onChange={selectPosition}>
             <option value="TopRight">Top Rigth</option>
             <option value="TopLeft">Top Left</option>
             <option value="BottomLeft">Bottom Rigth</option>
             <option value="BottomRight">Bottom Left</option>
-          </select>
-          {/* <button onClick={buttonHandle}>Click</button> */}
+          </SelectBox>
         </Content>
       </MainContainer>
-      {/* <ToastPortal modalActivee={modalActive} /> */}
-
-      <Toast
+      <ToastPortal
         toastList={list}
         position={position}
         autoDelete={checkValue}

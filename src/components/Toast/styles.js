@@ -4,6 +4,8 @@ export const ModalStyles = styled.div`
   position: absolute;
   margin: 10px;
 
+  width: 200px;
+
   top: ${({ position }) => {
     switch (position) {
       case "TopRight":

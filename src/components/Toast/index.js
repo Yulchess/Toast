@@ -19,9 +19,7 @@ export const Toast = ({ toastList, position, autoDelete, autoDeleteTime }) => {
     return () => {
       clearInterval(interval);
     };
-
-    // eslint-disable-next-line
-  }, [toastList, autoDelete, list]);
+  }, [toastList, autoDelete, autoDeleteTime, list]);
 
   const deleteToast = (id) => {
     const listItemIndex = list.findIndex((e) => e.id === id);
@@ -38,7 +36,7 @@ export const Toast = ({ toastList, position, autoDelete, autoDeleteTime }) => {
           <ToastInfo style={{ color: toast.color }}>
             {toast.description}
           </ToastInfo>
-
+          <img src={toast.icon} alt="" />
           <ToastCloseButton onClick={() => deleteToast(toast.id)} />
         </ToastComp>
       ))}
