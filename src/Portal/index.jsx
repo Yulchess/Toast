@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom";
 import React, { useEffect, useState } from "react";
 
-import { useToastPortal } from "../Hooks";
 import { Toast } from "../components/Toast";
 
 export const ToastPortal = ({
@@ -10,15 +9,12 @@ export const ToastPortal = ({
   checkValue,
   autoDeleteTime,
 }) => {
-  const [list, setList] = useState(toastList);
-
   const [loaded, setLoaded] = useState(false);
   const [portalId] = useState(`${Date.now()}`);
 
   useEffect(() => {
     const div = document.createElement("div");
     div.id = portalId;
-    div.style = "position: fixed; top: 10px; right: 10px";
     document.getElementsByTagName("body")[0].prepend(div);
 
     setLoaded(true);
@@ -30,10 +26,8 @@ export const ToastPortal = ({
   return loaded
     ? ReactDOM.createPortal(
         <div>
-          <p>Hell</p>
-
           <Toast
-            toastList={list}
+            toastList={toastList}
             position={position}
             autoDelete={checkValue}
             autoDeleteTime={autoDeleteTime}

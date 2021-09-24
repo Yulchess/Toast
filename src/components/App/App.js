@@ -6,32 +6,24 @@ import {
   CheckBoxText,
   SelectBox,
 } from "./components";
-import { infoNotification } from "../../theme";
+
 import { DesignContext } from "../../Context/DesignProvider";
 import { ThemeProvider } from "styled-components";
 import { ToastPortal } from "../../Portal";
 import { Button } from "../Button";
-import { Toast } from "../Toast";
-// import Success from "/src/assets/Success.png";
+
+import successImage from "../../assets/Success.png";
+import warningImage from "../../assets/Warning.png";
+import infoImage from "../../assets/Info.png";
+import errorImage from "../../assets/Error.png";
 
 export const App = () => {
-  const [modalActive, setModalActive] = useState(false);
-  const [selectToastTheme, setselectToastTheme] = useState(infoNotification);
-  const { theme, changeNotification } = useContext(DesignContext);
+  const { theme } = useContext(DesignContext);
   let [checkValue, setCheckValue] = useState(false);
   const [list, setList] = useState([]);
   const [position, setPosition] = useState("TopRight");
 
-  const [autoDeleteTime, setAutoDeleteTime] = useState(2000);
-
-  // const buttonHandle = () => {
-  //   setModalActive(true);
-  // };
-
-  const selectOnChangeHandle = (event) => {
-    changeNotification(event.target.value);
-    setselectToastTheme(event.target.value);
-  };
+  // const [autoDeleteTime, setAutoDeleteTime] = useState(2000);
 
   let toastProperties = null;
 
@@ -68,6 +60,7 @@ export const App = () => {
           description: "Success toast example",
           backgroundColor: `${theme.colors.shamrock}`,
           color: `${theme.colors.white}`,
+          icon: successImage,
         };
         break;
       case "error":
@@ -76,6 +69,7 @@ export const App = () => {
           description: "Error toast example",
           backgroundColor: `${theme.colors.flamePea}`,
           color: `${theme.colors.white}`,
+          icon: errorImage,
         };
         break;
       case "info":
@@ -84,6 +78,7 @@ export const App = () => {
           description: "Info toast example",
           backgroundColor: `${theme.colors.darkOrchid}`,
           color: `${theme.colors.white}`,
+          icon: infoImage,
         };
         break;
       case "warning":
@@ -92,6 +87,7 @@ export const App = () => {
           description: "Warning toast example",
           backgroundColor: `${theme.colors.minionYellow}`,
           color: `${theme.colors.black}`,
+          icon: warningImage,
         };
         break;
 
@@ -147,7 +143,7 @@ export const App = () => {
         toastList={list}
         position={position}
         autoDelete={checkValue}
-        autoDeleteTime={autoDeleteTime}
+        // autoDeleteTime={autoDeleteTime}
       />
     </ThemeProvider>
   );

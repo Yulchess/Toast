@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
+
 export const ButtonContent = styled.button`
   cursor: pointer;
   width: 100px;

@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-import": "^2.24.2"
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-simple-import-sort": "^7.0.0"
   }
 }

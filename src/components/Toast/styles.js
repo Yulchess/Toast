@@ -4,8 +4,6 @@ export const ModalStyles = styled.div`
   position: absolute;
   margin: 10px;
 
-  width: 200px;
-
   top: ${({ position }) => {
     switch (position) {
       case "TopRight":
@@ -62,10 +60,10 @@ export const ToastComp = styled.div`
 `;
 
 export const ToastInfo = styled.p`
+  font-size: 18px;
   margin: 0;
   text-align: left;
-  height: 18px;
-  margin-left: -1px;
+  height: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
