@@ -5,9 +5,9 @@ import errorImage from "../../assets/Error.png";
 import infoImage from "../../assets/Info.png";
 import successImage from "../../assets/Success.png";
 import warningImage from "../../assets/Warning.png";
-import { BUTTON_PROPS } from "../../constants.js/imdex";
-import { DesignContext } from "../../Context/DesignProvider";
-import { ToastPortal } from "../../Portal";
+import { BUTTON_PROPS } from "../../constants.js/index";
+import { DesignContext } from "../../context/index";
+import { ToastPortal } from "../../portal";
 import { Button } from "../Button";
 import {
   CheckBoxContent,

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { App } from "./components/App/App";
-import { DesignProvider } from "./Context/DesignProvider";
+import { DesignProvider } from "./context/index";
 
 ReactDOM.render(
   <React.StrictMode>
