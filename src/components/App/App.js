@@ -5,7 +5,7 @@ import errorImage from "../../assets/Error.png";
 import infoImage from "../../assets/Info.png";
 import successImage from "../../assets/Success.png";
 import warningImage from "../../assets/Warning.png";
-import { BUTTON_PROPS } from "../../constants.js/index";
+import { BUTTON_PROPS } from "../../constants/ButtonInfo";
 import { DesignContext } from "../../context/index";
 import { ToastPortal } from "../../portal";
 import { Button } from "../Button";
@@ -15,11 +15,11 @@ import {
   Content,
   MainContainer,
   SelectBox,
-} from "./components";
+} from "./style";
 
 export const App = () => {
   const { theme } = useContext(DesignContext);
-  let [checkValue, setCheckValue] = useState(false);
+  const [checkValue, setCheckValue] = useState(false);
   const [list, setList] = useState([]);
   const [position, setPosition] = useState("TopRight");
   let toastProperties = null;
@@ -73,8 +73,7 @@ export const App = () => {
   };
 
   const onCheckBoxChange = () => {
-    checkValue = !checkValue;
-    setCheckValue(checkValue);
+    setCheckValue(!checkValue);
   };
 
   const selectPosition = (e) => {
@@ -114,7 +113,6 @@ export const App = () => {
         toastList={list}
         position={position}
         checkValue={checkValue}
-        label={BUTTON_PROPS.label}
       />
     </ThemeProvider>
   );

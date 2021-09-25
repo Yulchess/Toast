@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import { Toast } from "../components/Toast";
 
-export const ToastPortal = ({ toastList, position, checkValue, isWarning }) => {
+export const ToastPortal = ({ toastList, position, checkValue }) => {
   const [loaded, setLoaded] = useState(false);
   const [portalId] = useState(`${Date.now()}`);
 
@@ -24,7 +24,6 @@ export const ToastPortal = ({ toastList, position, checkValue, isWarning }) => {
             toastList={toastList}
             position={position}
             checkValue={checkValue}
-            isWarning={isWarning}
           />
         </div>,
         document.getElementById(portalId)
