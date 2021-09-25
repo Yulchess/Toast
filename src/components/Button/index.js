@@ -1,4 +1,5 @@
 import React from "react";
+
 import { ButtonContent } from "./style";
 
 export const Button = ({ label, className, handleClick }) => {

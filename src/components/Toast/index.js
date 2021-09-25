@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   ModalStyles,
-  ToastContent,
-  ToastInfo,
   ToastCloseButton,
-  ToastIcon,
+  ToastContent,
   ToastContentBlock,
+  ToastIcon,
+  ToastInfo,
 } from "./styles";
 
 export const Toast = ({ toastList, position, checkValue }) => {
