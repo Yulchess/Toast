@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/Toast/static/js/main.becb0e42.chunk.js",
+    "main.js.map": "/Toast/static/js/main.becb0e42.chunk.js.map",
+    "runtime-main.js": "/Toast/static/js/runtime-main.976ab230.js",
+    "runtime-main.js.map": "/Toast/static/js/runtime-main.976ab230.js.map",
+    "static/js/2.f8782b01.chunk.js": "/Toast/static/js/2.f8782b01.chunk.js",
+    "static/js/2.f8782b01.chunk.js.map": "/Toast/static/js/2.f8782b01.chunk.js.map",
+    "index.html": "/Toast/index.html",
+    "static/js/2.f8782b01.chunk.js.LICENSE.txt": "/Toast/static/js/2.f8782b01.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.976ab230.js",
+    "static/js/2.f8782b01.chunk.js",
+    "static/js/main.becb0e42.chunk.js"
+  ]
+}
