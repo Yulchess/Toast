@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { spacing, theme } from "../../theme";
 
 export const ButtonContent = styled.button`
   cursor: pointer;
-  width: 100px;
-  height: 25px;
-  border-radius: 10px;
+  width: ${spacing[12]}px;
+  height: ${spacing[8]}px;
+  border-radius: ${spacing[3]}px;
   background-color: ${theme.colors.white};
   border: none;
   &:hover {

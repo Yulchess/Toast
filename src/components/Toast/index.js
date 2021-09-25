@@ -9,7 +9,7 @@ import {
   ToastContentBlock,
 } from "./styles";
 
-export const Toast = ({ toastList, position, checkValue, isWarning }) => {
+export const Toast = ({ toastList, position, checkValue }) => {
   const [list, setList] = useState(toastList);
 
   useEffect(() => {

@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { spacing } from "../../theme";
 
 export const ModalStyles = styled.div`
   position: absolute;
-  margin: 10px;
+  margin: ${spacing[3]}px;
 
   top: ${({ position }) => {
     switch (position) {
@@ -53,40 +53,40 @@ export const ToastContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  height: 60px;
-  width: 260px;
-  border-radius: 15px;
-  margin: 4px;
+  padding: ${spacing[4]}px;
+  height: ${spacing[11]}px;
+  width: ${spacing[13]}px;
+  border-radius: ${spacing[4]}px;
+  margin: ${spacing[2]}px;
 `;
 
 export const ToastInfo = styled.p`
-  font-size: 18px;
+  font-size: ${spacing[5]}px;
   text-align: left;
-  height: 20px;
+  height: ${spacing[6]}px;
   margin: 0px;
-  margin-left: 15px;
+  margin-left: ${spacing[4]}px;
 `;
 
 export const ToastContentBlock = styled.div`
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: ${spacing[12]}%;
+  height: ${spacing[12]}%;
   align-items: center;
 `;
 
 export const ToastCloseButton = styled.div`
   cursor: pointer;
   position: relative;
-  right: 20px;
-  top: -20px;
+  right: ${spacing[6]}px;
+  top: ${spacing[1]}px;
 
   &:before,
   &:after {
     content: "";
     position: absolute;
-    width: 24px;
-    height: 4px;
+    width: ${spacing[7]}px;
+    height: ${spacing[2]}px;
     background-color: ${({ isBlack }) => (isBlack ? "black" : "white")};
   }
   &:before {
@@ -97,6 +97,6 @@ export const ToastCloseButton = styled.div`
   }
 `;
 export const ToastIcon = styled.img`
-  width: 35px;
-  height: 35px;
+  width: ${spacing[9]}px;
+  height: ${spacing[9]};
 `;
