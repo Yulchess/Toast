@@ -16,36 +16,13 @@ import successImage from "../../assets/Success.png";
 import warningImage from "../../assets/Warning.png";
 import infoImage from "../../assets/Info.png";
 import errorImage from "../../assets/Error.png";
-
+import { BUTTON_PROPS } from "../../constants.js/imdex";
 export const App = () => {
   const { theme } = useContext(DesignContext);
   let [checkValue, setCheckValue] = useState(false);
   const [list, setList] = useState([]);
   const [position, setPosition] = useState("TopRight");
   let toastProperties = null;
-
-  const BUTTON_PROPS = [
-    {
-      id: 1,
-      type: "success",
-      label: "Success",
-    },
-    {
-      id: 2,
-      type: "error",
-      label: "Error",
-    },
-    {
-      id: 3,
-      type: "info",
-      label: "Info",
-    },
-    {
-      id: 4,
-      type: "warning",
-      label: "Warning",
-    },
-  ];
 
   const showToast = (type) => {
     const id = Date.now();

@@ -87,7 +87,7 @@ export const ToastCloseButton = styled.div`
     position: absolute;
     width: 24px;
     height: 4px;
-    background-color: white;
+    background-color: ${({ isBlack }) => (isBlack ? "black" : "white")};
   }
   &:before {
     transform: rotate(45deg);

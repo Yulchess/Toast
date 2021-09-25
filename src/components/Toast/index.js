@@ -51,7 +51,7 @@ export const Toast = ({ toastList, position, checkValue, isWarning }) => {
           </ToastContentBlock>
 
           <ToastCloseButton
-            isWarning={isWarning}
+            isBlack={toast.description.includes("Warning")}
             onClick={() => deleteToast(toast.id)}
           />
         </ToastContent>
