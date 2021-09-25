@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-import { ModalStyles, ToastComp, ToastInfo, ToastCloseButton } from "./styles";
+import {
+  ModalStyles,
+  ToastContent,
+  ToastInfo,
+  ToastCloseButton,
+  ToastIcon,
+  ToastContentBlock,
+} from "./styles";
 
-export const Toast = ({ toastList, position, autoDelete }) => {
+export const Toast = ({ toastList, position, checkValue, isWarning }) => {
   const [list, setList] = useState(toastList);
 
   useEffect(() => {
@@ -11,7 +18,7 @@ export const Toast = ({ toastList, position, autoDelete }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (autoDelete && toastList.length && list.length) {
+      if (checkValue && toastList.length && list.length) {
         deleteToast(toastList[0].id);
       }
     }, 2000);
@@ -19,7 +26,7 @@ export const Toast = ({ toastList, position, autoDelete }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [toastList, autoDelete, list]);
+  }, [toastList, checkValue, list]);
 
   const deleteToast = (id) => {
     const listItemIndex = list.findIndex((e) => e.id === id);
@@ -32,14 +39,22 @@ export const Toast = ({ toastList, position, autoDelete }) => {
   return (
     <ModalStyles position={position}>
       {list.map((toast, i) => (
-        <ToastComp key={i} style={{ backgroundColor: toast.backgroundColor }}>
-          <img style={{ width: 35 }} src={toast.icon} alt="" />
-          <ToastInfo style={{ color: toast.color }}>
-            {toast.description}
-          </ToastInfo>
+        <ToastContent
+          key={i}
+          style={{ backgroundColor: toast.backgroundColor }}
+        >
+          <ToastContentBlock>
+            <ToastIcon src={toast.icon} />
+            <ToastInfo style={{ color: toast.color }}>
+              {toast.description}
+            </ToastInfo>
+          </ToastContentBlock>
 
-          <ToastCloseButton onClick={() => deleteToast(toast.id)} />
-        </ToastComp>
+          <ToastCloseButton
+            isWarning={isWarning}
+            onClick={() => deleteToast(toast.id)}
+          />
+        </ToastContent>
       ))}
     </ModalStyles>
   );

@@ -22,9 +22,6 @@ export const App = () => {
   let [checkValue, setCheckValue] = useState(false);
   const [list, setList] = useState([]);
   const [position, setPosition] = useState("TopRight");
-
-  // const [autoDeleteTime, setAutoDeleteTime] = useState(2000);
-
   let toastProperties = null;
 
   const BUTTON_PROPS = [
@@ -101,12 +98,10 @@ export const App = () => {
   const onCheckBoxChange = () => {
     checkValue = !checkValue;
     setCheckValue(checkValue);
-    setList([]);
   };
 
   const selectPosition = (e) => {
     setPosition(e.target.value);
-    setList([]);
   };
 
   return (
@@ -122,7 +117,6 @@ export const App = () => {
               />
             ))}
           </div>
-
           <CheckBoxContent>
             <input
               type="checkbox"
@@ -142,8 +136,8 @@ export const App = () => {
       <ToastPortal
         toastList={list}
         position={position}
-        autoDelete={checkValue}
-        // autoDeleteTime={autoDeleteTime}
+        checkValue={checkValue}
+        label={BUTTON_PROPS.label}
       />
     </ThemeProvider>
   );

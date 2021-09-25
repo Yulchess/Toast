@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 export const ModalStyles = styled.div`
   position: absolute;
@@ -48,11 +49,11 @@ export const ModalStyles = styled.div`
     }
   }};
 `;
-export const ToastComp = styled.div`
+export const ToastContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   height: 60px;
   width: 260px;
   border-radius: 15px;
@@ -61,19 +62,24 @@ export const ToastComp = styled.div`
 
 export const ToastInfo = styled.p`
   font-size: 18px;
-  margin: 0;
   text-align: left;
   height: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  top: 5px;
+  margin: 0px;
+  margin-left: 15px;
+`;
+
+export const ToastContentBlock = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
 `;
 
 export const ToastCloseButton = styled.div`
   cursor: pointer;
   position: relative;
-  right: 18px;
+  right: 20px;
+  top: -20px;
 
   &:before,
   &:after {
@@ -89,4 +95,8 @@ export const ToastCloseButton = styled.div`
   &:after {
     transform: rotate(-45deg);
   }
+`;
+export const ToastIcon = styled.img`
+  width: 35px;
+  height: 35px;
 `;
