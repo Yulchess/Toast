@@ -1,19 +1,31 @@
 import { useContext, useState } from "react";
 import { ThemeProvider } from "styled-components";
 
-import errorImage from "../../assets/Error.png";
-import infoImage from "../../assets/Info.png";
-import successImage from "../../assets/Success.png";
-import warningImage from "../../assets/Warning.png";
 import { BUTTON_PROPS } from "../../constants/ButtonInfo";
+import {
+  ERROR,
+  ERROR_TOAST,
+  INFO,
+  INFO_TOAST,
+  SUCCESS,
+  SUCCESS_TOAST,
+  WARNING,
+  WARNING_TOAST,
+} from "../../constants/ToastProperties";
 import { DesignContext } from "../../context/index";
 import { ToastPortal } from "../../portal";
 import { Button } from "../Button";
 import {
+  BottomLeftValue,
+  BottomRigthValue,
+  ButtonContent,
+  Checkbox,
   CheckBoxContent,
   CheckBoxText,
   Content,
+  LeftValue,
   MainContainer,
+  RigthValue,
   SelectBox,
 } from "./style";
 
@@ -22,54 +34,25 @@ export const App = () => {
   const [checkValue, setCheckValue] = useState(false);
   const [list, setList] = useState([]);
   const [position, setPosition] = useState("TopRight");
-  let toastProperties = null;
 
   const showToast = (type) => {
-    const id = Date.now();
-
     switch (type) {
-      case "success":
-        toastProperties = {
-          id,
-          description: "Success toast example",
-          backgroundColor: `${theme.colors.shamrock}`,
-          color: `${theme.colors.white}`,
-          icon: successImage,
-        };
+      case SUCCESS:
+        setList([...list, SUCCESS_TOAST]);
         break;
-      case "error":
-        toastProperties = {
-          id,
-          description: "Error toast example",
-          backgroundColor: `${theme.colors.flamePea}`,
-          color: `${theme.colors.white}`,
-          icon: errorImage,
-        };
+      case ERROR:
+        setList([...list, ERROR_TOAST]);
         break;
-      case "info":
-        toastProperties = {
-          id,
-          description: "Info toast example",
-          backgroundColor: `${theme.colors.darkOrchid}`,
-          color: `${theme.colors.white}`,
-          icon: infoImage,
-        };
+      case INFO:
+        setList([...list, INFO_TOAST]);
         break;
-      case "warning":
-        toastProperties = {
-          id,
-          description: "Warning toast example",
-          backgroundColor: `${theme.colors.minionYellow}`,
-          color: `${theme.colors.black}`,
-          icon: warningImage,
-        };
+      case WARNING:
+        setList([...list, WARNING_TOAST]);
         break;
 
       default:
         setList([]);
     }
-
-    setList([...list, toastProperties]);
   };
 
   const onCheckBoxChange = () => {
@@ -84,7 +67,7 @@ export const App = () => {
     <ThemeProvider theme={theme}>
       <MainContainer>
         <Content>
-          <div>
+          <ButtonContent>
             {BUTTON_PROPS.map((e) => (
               <Button
                 key={e.id}
@@ -92,20 +75,20 @@ export const App = () => {
                 handleClick={() => showToast(e.type)}
               />
             ))}
-          </div>
+          </ButtonContent>
           <CheckBoxContent>
-            <input
+            <Checkbox
               type="checkbox"
               value={checkValue}
               onChange={onCheckBoxChange}
-            ></input>
+            ></Checkbox>
             <CheckBoxText>Auto close</CheckBoxText>
           </CheckBoxContent>
           <SelectBox value={position} onChange={selectPosition}>
-            <option value="TopRight">Top Rigth</option>
-            <option value="TopLeft">Top Left</option>
-            <option value="BottomLeft">Bottom Rigth</option>
-            <option value="BottomRight">Bottom Left</option>
+            <RigthValue value="TopRight">Top Rigth</RigthValue>
+            <LeftValue value="TopLeft">Top Left</LeftValue>
+            <BottomLeftValue value="BottomLeft">Bottom Rigth</BottomLeftValue>
+            <BottomRigthValue value="BottomRight">Bottom Left</BottomRigthValue>
           </SelectBox>
         </Content>
       </MainContainer>

@@ -19,13 +19,11 @@ export const ToastPortal = ({ toastList, position, checkValue }) => {
 
   return loaded
     ? ReactDOM.createPortal(
-        <div>
-          <Toast
-            toastList={toastList}
-            position={position}
-            checkValue={checkValue}
-          />
-        </div>,
+        <Toast
+          toastList={toastList}
+          position={position}
+          checkValue={checkValue}
+        />,
         document.getElementById(portalId)
       )
     : null;

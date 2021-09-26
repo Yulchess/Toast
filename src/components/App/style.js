@@ -25,3 +25,10 @@ export const SelectBox = styled.select`
   margin-top: ${spacing[3]}px;
   height: ${spacing[8]}px;
 `;
+
+export const ButtonContent = styled.div``;
+export const Checkbox = styled.input``;
+export const RigthValue = styled.option``;
+export const LeftValue = styled.option``;
+export const BottomLeftValue = styled.option``;
+export const BottomRigthValue = styled.option``;
