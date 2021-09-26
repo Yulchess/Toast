@@ -9,16 +9,10 @@ import {
   ToastInfo,
 } from "./styles";
 
-export const Toast = ({ toastList, position, checkValue }) => {
-  const [list, setList] = useState(toastList);
-
-  useEffect(() => {
-    setList([...toastList]);
-  }, [toastList]);
-
+export const Toast = ({ toastList, position, checkValue, setList }) => {
   useEffect(() => {
     const interval = setInterval(() => {
-      if (checkValue && toastList.length && list.length) {
+      if (checkValue && toastList.length) {
         deleteToast(toastList[0].id);
       }
     }, 2000);
@@ -26,19 +20,15 @@ export const Toast = ({ toastList, position, checkValue }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [toastList, checkValue, list]);
+  }, [toastList, checkValue]);
 
   const deleteToast = (id) => {
-    const listItemIndex = list.findIndex((e) => e.id === id);
-    const toastListItem = toastList.findIndex((e) => e.id === id);
-    list.splice(listItemIndex, 1);
-    toastList.splice(toastListItem, 1);
-    setList([...list]);
+    setList([...toastList.filter((toast) => toast.id !== id)]);
   };
 
   return (
     <ModalStyles position={position}>
-      {list.map((toast, i) => (
+      {toastList.map((toast, i) => (
         <ToastContent
           key={i}
           style={{ backgroundColor: toast.backgroundColor }}

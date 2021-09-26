@@ -36,18 +36,19 @@ export const App = () => {
   const [position, setPosition] = useState("TopRight");
 
   const showToast = (type) => {
+    const id = Date.now();
     switch (type) {
       case SUCCESS:
-        setList([...list, SUCCESS_TOAST]);
+        setList([...list, { ...SUCCESS_TOAST, id }]);
         break;
       case ERROR:
-        setList([...list, ERROR_TOAST]);
+        setList([...list, { ...ERROR_TOAST, id }]);
         break;
       case INFO:
-        setList([...list, INFO_TOAST]);
+        setList([...list, { ...INFO_TOAST, id }]);
         break;
       case WARNING:
-        setList([...list, WARNING_TOAST]);
+        setList([...list, { ...WARNING_TOAST, id }]);
         break;
 
       default:
@@ -96,6 +97,7 @@ export const App = () => {
         toastList={list}
         position={position}
         checkValue={checkValue}
+        setList={setList}
       />
     </ThemeProvider>
   );
