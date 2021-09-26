@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { SUCCESS } from "../../constants/ToastProperties";
+import { ERROR, INFO, SUCCESS, WARNING } from "../../constants/ToastProperties";
 import { spacing, theme } from "../../theme";
 
 export const ButtonContent = styled.button`
@@ -13,13 +13,13 @@ export const ButtonContent = styled.button`
   &:hover {
     background-color: ${({ label }) => {
       switch (label) {
-        case SUCCESS:
+        case "Success":
           return `${theme.colors.shamrock}`;
-        case "ERROR":
+        case "Error":
           return `${theme.colors.flamePea}`;
-        case "INFO":
+        case "Info":
           return `${theme.colors.darkOrchid}`;
-        case "WARNING":
+        case "Warning":
           return `${theme.colors.minionYellow}`;
         default:
           return `${theme.colors.white}`;
