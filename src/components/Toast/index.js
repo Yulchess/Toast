@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { TOAST_POSITIONS } from "../../constants/toastPositions";
 import {
   ModalStyles,
   ToastCloseButton,
@@ -13,7 +14,7 @@ export const Toast = ({ toastList, position, checkValue, setList }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (checkValue && toastList.length) {
-        deleteToast(toastList[0].id);
+        handleDeleteToast(toastList[0].id)();
       }
     }, 2000);
 
@@ -22,27 +23,22 @@ export const Toast = ({ toastList, position, checkValue, setList }) => {
     };
   }, [toastList, checkValue]);
 
-  const deleteToast = (id) => {
+  const handleDeleteToast = (id) => () => {
     setList([...toastList.filter((toast) => toast.id !== id)]);
   };
 
   return (
-    <ModalStyles position={position}>
-      {toastList.map((toast, i) => (
-        <ToastContent
-          key={i}
-          style={{ backgroundColor: toast.backgroundColor }}
-        >
+    <ModalStyles position={position} toastPosition={TOAST_POSITIONS}>
+      {toastList.map((toast) => (
+        <ToastContent key={toast.id} backgroundColor={toast.backgroundColor}>
           <ToastContentBlock>
             <ToastIcon src={toast.icon} />
-            <ToastInfo style={{ color: toast.color }}>
-              {toast.description}
-            </ToastInfo>
+            <ToastInfo toastColor={toast.color}>{toast.description}</ToastInfo>
           </ToastContentBlock>
 
           <ToastCloseButton
             isBlack={toast.description.includes("Warning")}
-            onClick={() => deleteToast(toast.id)}
+            onClick={handleDeleteToast(toast.id)}
           />
         </ToastContent>
       ))}

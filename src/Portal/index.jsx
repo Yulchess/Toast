@@ -17,15 +17,16 @@ export const ToastPortal = ({ toastList, position, checkValue, setList }) => {
     return () => document.getElementsByTagName("body")[0].removeChild(div);
   }, [portalId]);
 
-  return loaded
-    ? ReactDOM.createPortal(
-        <Toast
-          toastList={toastList}
-          position={position}
-          checkValue={checkValue}
-          setList={setList}
-        />,
-        document.getElementById(portalId)
-      )
-    : null;
+  return (
+    loaded &&
+    ReactDOM.createPortal(
+      <Toast
+        toastList={toastList}
+        position={position}
+        checkValue={checkValue}
+        setList={setList}
+      />,
+      document.getElementById(portalId)
+    )
+  );
 };

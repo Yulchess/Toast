@@ -1,66 +1,64 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { ThemeProvider } from "styled-components";
 
-import { BUTTON_PROPS } from "../../constants/ButtonInfo";
+import { BUTTON_PROPS } from "../../constants/buttonInfo";
 import {
-  ERROR,
   ERROR_TOAST,
-  INFO,
   INFO_TOAST,
-  SUCCESS,
   SUCCESS_TOAST,
-  WARNING,
   WARNING_TOAST,
-} from "../../constants/ToastProperties";
-import { DesignContext } from "../../context/index";
+} from "../../constants/toastProperties";
+import {
+  BOTTOM_LEFT,
+  BOTTOM_RIGHT,
+  TOP_LEFT,
+  TOP_RIGHT,
+} from "../../constants/toastProperties";
+import { TOAST_TYPE } from "../../constants/toastType";
+import GlobalStyles from "../../globalStyles";
 import { ToastPortal } from "../../portal";
+import { theme } from "../../theme";
 import { Button } from "../Button";
 import {
-  BottomLeftValue,
-  BottomRigthValue,
   ButtonContent,
   Checkbox,
   CheckBoxContent,
   CheckBoxText,
   Content,
-  LeftValue,
   MainContainer,
-  RigthValue,
+  OptionValue,
   SelectBox,
 } from "./style";
 
 export const App = () => {
-  const { theme } = useContext(DesignContext);
   const [checkValue, setCheckValue] = useState(false);
   const [list, setList] = useState([]);
-  const [position, setPosition] = useState("TopRight");
+  const [position, setPosition] = useState(TOP_RIGHT);
 
-  const showToast = (type) => {
-    const id = Date.now();
-    switch (type) {
-      case SUCCESS:
-        setList([...list, { ...SUCCESS_TOAST, id }]);
-        break;
-      case ERROR:
-        setList([...list, { ...ERROR_TOAST, id }]);
-        break;
-      case INFO:
-        setList([...list, { ...INFO_TOAST, id }]);
-        break;
-      case WARNING:
-        setList([...list, { ...WARNING_TOAST, id }]);
-        break;
+  const config = {
+    [TOAST_TYPE.Success]: SUCCESS_TOAST,
+    [TOAST_TYPE.Error]: ERROR_TOAST,
+    [TOAST_TYPE.Info]: INFO_TOAST,
+    [TOAST_TYPE.Warning]: WARNING_TOAST,
+  };
 
-      default:
-        setList([]);
+  const showToast = (type) => () => {
+    const id = Date.now().toString();
+    const options = config[type];
+
+    if (options) {
+      setList([...list, { ...options, id }]);
+    } else {
+      setList([]);
     }
   };
 
-  const onCheckBoxChange = () => {
-    setCheckValue(!checkValue);
-  };
+  const handleOnCheckBoxChange = useCallback(
+    () => setCheckValue(!checkValue),
+    [checkValue]
+  );
 
-  const selectPosition = (e) => {
+  const handleSelectPosition = (e) => {
     setPosition(e.target.value);
   };
 
@@ -73,7 +71,8 @@ export const App = () => {
               <Button
                 key={e.id}
                 label={e.label}
-                handleClick={() => showToast(e.type)}
+                type={e.type}
+                handleClick={showToast(e.type)}
               />
             ))}
           </ButtonContent>
@@ -81,15 +80,15 @@ export const App = () => {
             <Checkbox
               type="checkbox"
               value={checkValue}
-              onChange={onCheckBoxChange}
+              onChange={handleOnCheckBoxChange}
             ></Checkbox>
             <CheckBoxText>Auto close</CheckBoxText>
           </CheckBoxContent>
-          <SelectBox value={position} onChange={selectPosition}>
-            <RigthValue value="TopRight">Top Rigth</RigthValue>
-            <LeftValue value="TopLeft">Top Left</LeftValue>
-            <BottomLeftValue value="BottomLeft">Bottom Rigth</BottomLeftValue>
-            <BottomRigthValue value="BottomRight">Bottom Left</BottomRigthValue>
+          <SelectBox value={position} onChange={handleSelectPosition}>
+            <OptionValue value={TOP_RIGHT}>Top Rigth</OptionValue>
+            <OptionValue value={TOP_LEFT}>Top Left</OptionValue>
+            <OptionValue value={BOTTOM_LEFT}>Bottom Rigth</OptionValue>
+            <OptionValue value={BOTTOM_RIGHT}>Bottom Left</OptionValue>
           </SelectBox>
         </Content>
       </MainContainer>
@@ -99,6 +98,7 @@ export const App = () => {
         checkValue={checkValue}
         setList={setList}
       />
+      <GlobalStyles />
     </ThemeProvider>
   );
 };

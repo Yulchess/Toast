@@ -1,6 +1,4 @@
-export const spacing = [
-  -45, -20, 4, 10, 15, 18, 20, 24, 25, 35, 45, 60, 100, 260, 500,
-];
+import { TOAST_TYPE } from "./constants/toastType";
 
 const main = "red";
 const darkOrchid = "#9a40d3";
@@ -12,12 +10,15 @@ const black = "#000000";
 
 export const theme = {
   colors: {
-    darkOrchid,
-    minionYellow,
-    flamePea,
-    shamrock,
+    [TOAST_TYPE.Info]: darkOrchid,
+    [TOAST_TYPE.Warning]: minionYellow,
+    [TOAST_TYPE.Error]: flamePea,
+    [TOAST_TYPE.Success]: shamrock,
     white,
     black,
     main,
   },
+  fontSize: [15, 17],
+  borderRadius: [10, 15],
+  spacing: [-20, 0, 4, 10, 15, 18, 20, 25],
 };
