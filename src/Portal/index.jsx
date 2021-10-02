@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
-import { Toast } from "../components/Toast";
+import { Toast } from "@/components/Toast";
 
 export const ToastPortal = ({ toastList, position, checkValue, setList }) => {
   const [loaded, setLoaded] = useState(false);

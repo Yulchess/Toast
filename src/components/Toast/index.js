@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-import { TOAST_POSITIONS } from "../../constants/toastPositions";
+import { TOAST_POSITIONS } from "@/constants/toastPositions";
+
 import {
   ModalStyles,
   ToastCloseButton,
@@ -32,7 +33,7 @@ export const Toast = ({ toastList, position, checkValue, setList }) => {
       {toastList.map((toast) => (
         <ToastContent key={toast.id} backgroundColor={toast.backgroundColor}>
           <ToastContentBlock>
-            <ToastIcon src={toast.icon} />
+            <toast.icon />
             <ToastInfo toastColor={toast.color}>{toast.description}</ToastInfo>
           </ToastContentBlock>
 

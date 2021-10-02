@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-import {
-  BOTTOM_LEFT,
-  BOTTOM_RIGHT,
-  TOP_LEFT,
-  TOP_RIGHT,
-} from "../../constants/toastProperties";
-
 const TOAST_CONTENT_WIDTH = 260;
 const TOAST_CONTENT_HEIGTH = 60;
 
@@ -53,6 +46,10 @@ export const ToastContentBlock = styled.div`
   width: ${TOAST_CONTENT_BLOCK_WIDTH}%;
   height: ${TOAST_CONTENT_BLOCK_HEIGTH}%;
   align-items: center;
+  & > svg {
+    width: 35px;
+    height: 35px;
+  }
 `;
 
 export const ToastCloseButton = styled.div`

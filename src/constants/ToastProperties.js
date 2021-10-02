@@ -1,8 +1,9 @@
-import errorImage from "../assets/Error.svg";
-import infoImage from "../assets/Info.svg";
-import successImage from "../assets/Success.svg";
-import warningImage from "../assets/Warning.svg";
-import { theme } from "../theme";
+import errorImage from "@/assets/Error.svg";
+import infoImage from "@/assets/Info.svg";
+import successImage from "@/assets/Success.svg";
+import warningImage from "@/assets/Warning.svg";
+import { theme } from "@/theme";
+
 import { TOAST_TYPE } from "./toastType";
 
 export const SUCCESS = "SUCCESS";

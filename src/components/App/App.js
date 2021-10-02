@@ -1,23 +1,24 @@
-import { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { ThemeProvider } from "styled-components";
 
-import { BUTTON_PROPS } from "../../constants/buttonInfo";
+import { BUTTON_PROPS } from "@/constants/buttonInfo";
 import {
   ERROR_TOAST,
   INFO_TOAST,
   SUCCESS_TOAST,
   WARNING_TOAST,
-} from "../../constants/toastProperties";
+} from "@/constants/toastProperties";
 import {
   BOTTOM_LEFT,
   BOTTOM_RIGHT,
   TOP_LEFT,
   TOP_RIGHT,
-} from "../../constants/toastProperties";
-import { TOAST_TYPE } from "../../constants/toastType";
-import GlobalStyles from "../../globalStyles";
-import { ToastPortal } from "../../portal";
-import { theme } from "../../theme";
+} from "@/constants/toastProperties";
+import { TOAST_TYPE } from "@/constants/toastType";
+import GlobalStyles from "@/globalStyles";
+import { ToastPortal } from "@/Portal";
+import { theme } from "@/theme";
+
 import { Button } from "../Button";
 import {
   ButtonContent,
@@ -53,10 +54,9 @@ export const App = () => {
     }
   };
 
-  const handleOnCheckBoxChange = useCallback(
-    () => setCheckValue(!checkValue),
-    [checkValue]
-  );
+  const handleOnCheckBoxChange = useCallback(() => setCheckValue(!checkValue), [
+    checkValue,
+  ]);
 
   const handleSelectPosition = (e) => {
     setPosition(e.target.value);
