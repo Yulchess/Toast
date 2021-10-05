@@ -19,6 +19,7 @@ import GlobalStyles from "@/globalStyles";
 import { ToastPortal } from "@/Portal";
 import { theme } from "@/theme";
 
+// @todo @Yulchess всегда используй алиасы кроме относительных импортов (с той же папки как styles ниже)
 import { Button } from "../Button";
 import {
   ButtonContent,
@@ -31,6 +32,7 @@ import {
   SelectBox,
 } from "./style";
 
+// @todo: @Yulchess В библиотеке не нужен App, по сколько она не является react-приложением и не имеет точки входа (storybook - имеет свою точку входа, приложение которое будет использовать - свою)
 export const App = () => {
   const [checkValue, setCheckValue] = useState(false);
   const [list, setList] = useState([]);

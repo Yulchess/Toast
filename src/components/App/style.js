@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// @todo: @Yulchess рекомендовал бы перенести в theme
 const CONTENT_WIDTH = 100;
 const MAIN_CONTAINER_WIDTH = 100;
 const MAIN_CONTAINER_HEIGTH = 500;

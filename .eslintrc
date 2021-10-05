@@ -1,4 +1,5 @@
 {
+    // @todo: @Yulchess используй базовый конфиг air-bnb для реакта (см https://blog.bitsrc.io/how-to-set-up-airbnb-style-guide-for-react-projects-fc7dfb1f3d68)
     "plugins": ["simple-import-sort"],
     "parser": "babel-eslint",
     "rules": {
