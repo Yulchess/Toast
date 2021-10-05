@@ -10,6 +10,9 @@ import serve from "rollup-plugin-serve";
 const svgr = require("@svgr/rollup").default;
 const root = path.resolve(__dirname);
 
+// @todo: @Yulchess нету external зависимостей, при подключению к проекту в котором уже есть react и (или) styled-components - будут проблемы с разными версиями
+// см. https://www.mixmax.com/engineering/rollup-externals
+
 export default {
   input: "src/index.js",
   plugins: [
