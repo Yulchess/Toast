@@ -29,4 +29,4 @@
 
 - запуск сборки приложения
 
-  `npm run build `
+`npm run build `
