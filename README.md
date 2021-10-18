@@ -11,22 +11,22 @@
 
 - Выполнить
 
-`npm i toast-app-by-yulchess`
+  `npm i toast-app-by-yulchess`
 
-- Прописать
+- Добавить
 
-`import { ToastNotification } from 'toast-app-by-yulchess/dist/bundle'`
+  `import { ToastNotification } from 'toast-app-by-yulchess/dist/bundle'`
 
 ### React
 
-- Устновка пакетов
+- Установка пакетов
 
-`npm install`
+  `npm install`
 
-- запуск storybook
+- Запуск storybook
 
-`npm run storybook `
+  `npm run storybook `
 
-- запуск сборки приложения
+- Запуск сборки приложения
 
-`npm run build `
+  `npm run build `
