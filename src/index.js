@@ -1,4 +1,4 @@
-export { ToastNotification } from './components/App/index.jsx';
+export { ToastNotification } from './components/ToastNotification/index.jsx';
 export { Button } from './components/Button/index.jsx';
 export { Toast } from './components/Toast/index.jsx';
 export { BUTTON_PROPS } from './constants/buttonInfo';
